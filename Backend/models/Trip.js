@@ -19,8 +19,7 @@ const tripSchema = new mongoose.Schema({
         required: true,
     },
     driver: {
-        type: mongoose.Schema.Types.ObjectId,
-        type : String,
+        type: mongoose.Schema.Types.ObjectId, // Solo este tipo es válido para referencias
         ref: 'Driver',
         required: true,
     },
