@@ -11,7 +11,7 @@ const tripRoutes = require('./routes/tripRoutes'); // Importa las rutas de viaje
 const app = express();
 
 const corsOptions = {
-    origin: ['http://localhost:3000', 'https://prueba-2-9tc7.vercel.app'], // Cambia la URL por la de tu frontend
+    origin: ['http://localhost:3000', ], // Cambia la URL por la de tu frontend
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos permitidos
     credentials: true, // Permitir cookies o encabezados de autenticación
 };
