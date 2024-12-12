@@ -10,7 +10,12 @@ const tripRoutes = require('./routes/tripRoutes');
 const app = express();
 
 // Configuración de CORS
-app.use(cors());
+app.use(cors({
+    origin: ['*'], // Agrega tus dominios permitidos
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Métodos permitidos
+    allowedHeaders: ['Content-Type', 'Authorization'], // Encabezados permitidos
+    credentials: true, // Permitir cookies y encabezados personalizados
+}));
 
 // Configuración de encabezados adicionales para CORS
 app.use((req, res, next) => {
