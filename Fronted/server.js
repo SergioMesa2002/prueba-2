@@ -4,7 +4,7 @@ const { createProxyMiddleware } = require('http-proxy-middleware'); // Proxy par
 
 const app = express();
 const PORT = 3000; // Cambia el puerto si es necesario
-const BACKEND_URL = 'https://prueba-2-cwhb.onrender.com'; // Cambia esto a la URL correcta de tu backend desplegado
+const BACKEND_URL = 'https://f715-132-255-20-66.ngrok-free.app '; // Cambia esto a la URL correcta de tu backend desplegado
 
 // Middleware para servir archivos estáticos
 app.use(express.static(path.join(__dirname))); // Asegúrate de que los archivos estáticos están en la carpeta 'public'

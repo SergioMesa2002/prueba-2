@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-    const API_URL = 'https://prueba-2-backend.vercel.app/api/auth';
+    const API_URL = 'https://f715-132-255-20-66.ngrok-free.app/api/auth';
  // Asegúrate de que esta sea la URL correcta
 
     // Función para enviar datos al servidor

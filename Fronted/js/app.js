@@ -1,5 +1,5 @@
 // URL del backend
-const API_URL = 'https://prueba-2-cwhb.onrender.com/api/auth';
+const API_URL = 'https://f715-132-255-20-66.ngrok-free.app/api/auth';
 
 // Lógica para el inicio de sesión
 const loginForm = document.getElementById('loginForm');
@@ -107,7 +107,7 @@ if (registerClientForm) {
 }
 
 // Lógica para el menú del administrador
-const API_URL_ADMIN = 'https://prueba-2-cwhb.onrender.com/api/auth'; // Asegúrate de que esta URL sea la correcta
+const API_URL_ADMIN = 'https://f715-132-255-20-66.ngrok-free.app'; // Asegúrate de que esta URL sea la correcta
 
 // Mostrar/ocultar formularios
 document.getElementById('addBusButton')?.addEventListener('click', () => {
