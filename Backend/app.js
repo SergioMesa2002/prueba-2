@@ -9,17 +9,19 @@ const tripRoutes = require('./routes/tripRoutes');
 
 const app = express();
 
-// Configuración de CORS
+// Configuración de CORS para permitir todos los orígenes
 app.use(cors({
-    origin: ['http://localhost:3000', 'https://fronted-software.onrender.com'], // Agrega tus dominios permitidos
+    origin: '*', // Permitir todos los orígenes
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Métodos permitidos
     allowedHeaders: ['Content-Type', 'Authorization'], // Encabezados permitidos
-    credentials: true, // Permitir cookies y encabezados personalizados
 }));
 
-// Configuración de encabezados adicionales para CORS
+// Manejar solicitudes preflight (OPTIONS)
+app.options('*', cors());
+
+// Middleware para encabezados personalizados
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Origin', '*'); // Permitir todos los orígenes
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
     res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     next();
@@ -42,9 +44,6 @@ mongoose.connect(
 app.get('/', (req, res) => {
     res.send('Servidor funcionando correctamente');
 });
-
-// Manejar solicitudes preflight (OPTIONS)
-app.options('*', cors());
 
 // Iniciar el servidor
 const PORT = process.env.PORT || 5000;
