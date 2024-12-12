@@ -2,6 +2,8 @@ const express = require('express');
 const path = require('path');
 const { createProxyMiddleware } = require('http-proxy-middleware'); // Proxy para redirigir solicitudes
 
+
+
 const app = express();
 const PORT = 3000; // Cambia el puerto si es necesario
 const BACKEND_URL = 'https://prueba-2-cwhb.onrender.com'; // Cambia esto a la URL del backend desplegado
