@@ -1,5 +1,5 @@
 // URL del backend
-const API_URL = 'http://localhost:5000/api/auth';
+const API_URL = 'https://prueba-2-9tc7.vercel.app/api/auth';
 
 // Lógica para el inicio de sesión
 const loginForm = document.getElementById('loginForm');
@@ -107,7 +107,7 @@ if (registerClientForm) {
 }
 
 // Lógica para el menú del administrador
-const API_URL_ADMIN = 'http://localhost:5000/api/auth'; // Asegúrate de que esta URL sea la correcta
+const API_URL_ADMIN = 'https://prueba-2-9tc7.vercel.app/api/auth'; // Asegúrate de que esta URL sea la correcta
 
 // Mostrar/ocultar formularios
 document.getElementById('addBusButton')?.addEventListener('click', () => {
