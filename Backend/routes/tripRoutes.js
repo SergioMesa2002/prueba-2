@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const Trip = require('../models/trip'); // Importa el modelo Trip
+const Trip = require('../models/Trip');
+ // Importa el modelo Trip
 
 // Ruta para obtener todos los viajes o filtrar por origen, destino y fecha
 router.get('/', async (req, res) => {

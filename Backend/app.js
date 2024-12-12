@@ -2,6 +2,9 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const Trip = require('./models/Trip');
+
+
 
 const authRoutes = require('./routes/auth');
 const adminRoutes = require('./routes/admin');
