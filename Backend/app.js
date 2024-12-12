@@ -10,14 +10,14 @@ const tripRoutes = require('./routes/tripRoutes'); // Importa las rutas de viaje
 
 const app = express();
 
+// Configuración de CORS
 const corsOptions = {
-    origin: ['http://localhost:3000', 'https://fronted-software.onrender.com' ], // Cambia la URL por la de tu frontend
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos permitidos
+    origin: ['http://localhost:3000', 'https://fronted-software.onrender.com'], // Cambia esto según tu frontend desplegado
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Métodos permitidos
     credentials: true, // Permitir cookies o encabezados de autenticación
 };
 app.use(cors(corsOptions));
-app.options('*', cors(corsOptions)); // Manejo de preflight
-
+app.options('*', cors(corsOptions)); // Manejo explícito de solicitudes preflight
 
 // Configuración para procesar JSON y datos de formularios
 app.use(express.json());
@@ -40,6 +40,12 @@ mongoose.connect(URI, { useNewUrlParser: true, useUnifiedTopology: true })
 // Ruta raíz para pruebas
 app.get('/', (req, res) => {
     res.send('Servidor funcionando correctamente');
+});
+
+// Middleware para manejar errores generales
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).json({ message: 'Error en el servidor', error: err.message });
 });
 
 // Puerto de la aplicación
