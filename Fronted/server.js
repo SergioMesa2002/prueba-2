@@ -4,10 +4,10 @@ const { createProxyMiddleware } = require('http-proxy-middleware'); // Proxy par
 
 const app = express();
 const PORT = 3000; // Cambia el puerto si es necesario
-const BACKEND_URL = 'https://prueba-2-backend.vercel.app'; // URL del backend desplegado
+const BACKEND_URL = 'https://prueba-2-cwhb.onrender.com'; // Cambia esto a la URL del backend desplegado
 
 // Middleware para servir archivos estáticos
-app.use(express.static(path.join(__dirname, 'public'))); // Asegúrate de que tus archivos estáticos estén en la carpeta 'public'
+app.use(express.static(path.join(__dirname)));
 
 // Redirigir solicitudes de API al backend
 app.use('/api', createProxyMiddleware({
@@ -17,7 +17,7 @@ app.use('/api', createProxyMiddleware({
 
 // Manejo de rutas para index.html
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 // Iniciar el servidor
