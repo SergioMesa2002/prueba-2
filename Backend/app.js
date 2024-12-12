@@ -9,23 +9,25 @@ const tripRoutes = require('./routes/tripRoutes');
 
 const app = express();
 
-// Configuración de CORS para permitir todos los orígenes
+// Configuración de CORS para evitar bloqueos
 app.use(cors({
-    origin: '*', // Permitir todos los orígenes
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Métodos permitidos
+    origin: ['http://localhost:3000', 'https://fronted-software.onrender.com'], // Dominios permitidos
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Métodos HTTP permitidos
     allowedHeaders: ['Content-Type', 'Authorization'], // Encabezados permitidos
+    credentials: true, // Permitir credenciales como cookies
 }));
+
+// Middleware para manejar encabezados
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', req.headers.origin || '*');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.header('Access-Control-Allow-Credentials', 'true');
+    next();
+});
 
 // Manejar solicitudes preflight (OPTIONS)
 app.options('*', cors());
-
-// Middleware para encabezados personalizados
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*'); // Permitir todos los orígenes
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    next();
-});
 
 // Configuración de rutas REST
 app.use('/api/auth', authRoutes);
@@ -45,7 +47,6 @@ app.get('/', (req, res) => {
     res.send('Servidor funcionando correctamente');
 });
 
-// Iniciar el servidor
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
