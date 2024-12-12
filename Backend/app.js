@@ -2,9 +2,6 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const Trip = require('./models/Trip');
-
-
 
 const authRoutes = require('./routes/auth');
 const adminRoutes = require('./routes/admin');
@@ -12,14 +9,23 @@ const tripRoutes = require('./routes/tripRoutes');
 
 const app = express();
 
+// Configuración de CORS
 app.use(cors({
-    origin: '*', // Permitir todos los orígenes
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Métodos permitidos
-    credentials: false, // Deshabilitar encabezados de autenticación
+    origin: ['http://localhost:3000', 'https://fronted-software.onrender.com'], // Dominios permitidos
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    credentials: true, // Habilita credenciales (cookies o headers personalizados)
 }));
 
 // Manejar solicitudes preflight (OPTIONS)
 app.options('*', cors());
+
+// Encabezados adicionales
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*'); // Cambia '*' por dominios específicos si es necesario
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    next();
+});
 
 // Configuración de rutas REST
 app.use('/api/auth', authRoutes);
