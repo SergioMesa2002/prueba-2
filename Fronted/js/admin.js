@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-    const API_URL = 'https://prueba-2-9tc7.vercel.app/api/auth';
+    const API_URL = 'https://prueba-2-backend.vercel.app/api/auth';
  // Asegúrate de que esta sea la URL correcta
 
     // Función para enviar datos al servidor
