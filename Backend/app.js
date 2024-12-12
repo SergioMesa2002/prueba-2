@@ -11,17 +11,15 @@ const app = express();
 
 // Configuración de CORS
 app.use(cors({
-    origin: ['http://localhost:3000', 'https://fronted-software.onrender.com'], // Dominios permitidos
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    credentials: true, // Habilita credenciales (cookies o headers personalizados)
+    origin: ['http://localhost:3000', 'https://fronted-software.onrender.com'], // Agrega tus dominios permitidos
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Métodos permitidos
+    allowedHeaders: ['Content-Type', 'Authorization'], // Encabezados permitidos
+    credentials: true, // Permitir cookies y encabezados personalizados
 }));
 
-// Manejar solicitudes preflight (OPTIONS)
-app.options('*', cors());
-
-// Encabezados adicionales
+// Configuración de encabezados adicionales para CORS
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*'); // Cambia '*' por dominios específicos si es necesario
+    res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
     res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     next();
@@ -45,6 +43,10 @@ app.get('/', (req, res) => {
     res.send('Servidor funcionando correctamente');
 });
 
+// Manejar solicitudes preflight (OPTIONS)
+app.options('*', cors());
+
+// Iniciar el servidor
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
