@@ -5,7 +5,7 @@
       "headers": [
         {
           "key": "Access-Control-Allow-Origin",
-          "value": "https://fronted-software.onrender.com" 
+          "value": "https://fronted-software.onrender.com"
         },
         {
           "key": "Access-Control-Allow-Methods",
